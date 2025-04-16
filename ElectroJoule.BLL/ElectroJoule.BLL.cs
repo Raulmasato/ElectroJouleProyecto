@@ -1,4 +1,4 @@
-// Proyecto: ElectroJoule.BLL
+    // Proyecto: ElectroJoule.BLL
 
 namespace ElectroJoule.BLL {
     // Código aquí
