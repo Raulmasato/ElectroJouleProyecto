@@ -42,9 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ConexionBD.cs" />
     <Compile Include="ElectroJoule.DAL.cs" />
     <Compile Include="NotaPedidoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElectroJoule.ENTITY\ElectroJoule.ENTITY.csproj">
+      <Project>{d113de13-a904-4f62-8cf0-4564896a46b5}</Project>
+      <Name>ElectroJoule.ENTITY</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
