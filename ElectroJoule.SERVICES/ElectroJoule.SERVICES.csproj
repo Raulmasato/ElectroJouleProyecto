@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiStockService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="FacturaService.cs" />
     <Compile Include="LogService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

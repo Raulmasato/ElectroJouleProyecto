@@ -41,8 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="ElectroJoule.ENTITY.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="ItemPedido.cs" />
     <Compile Include="NotaPedido.cs" />

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Electrojoule.DAL;
 using ElectroJoule.ENTITY;
 
 
@@ -13,10 +14,8 @@ namespace ElectroJoule.DAL
             try
             {
                 NotaPedido nota = null;
-
                 using var conn = new SqlConnection(ConexionBD.Cadena);
                 conn.Open();
-
                 var cmd = new SqlCommand("SELECT * FROM NotaPedido WHERE Id = @id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
 
@@ -32,12 +31,7 @@ namespace ElectroJoule.DAL
                     };
                 }
                 reader.Close();
-
-                if (nota != null)
-                {
-                    nota.Items = ObtenerItems(id, conn);
-                }
-
+                if (nota != null) nota.Items = ObtenerItems(id, conn);
                 return nota;
             }
             catch (Exception ex)
@@ -66,10 +60,5 @@ namespace ElectroJoule.DAL
             reader.Close();
             return items;
         }
-    }
-
-    public static class ConexionBD
-    {
-        public static string Cadena => "Server=MI_SERVIDOR;Database=ElectroJoule;Trusted_Connection=True;";
     }
 }
