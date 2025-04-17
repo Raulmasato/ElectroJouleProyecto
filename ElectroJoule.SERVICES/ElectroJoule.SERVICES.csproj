@@ -42,10 +42,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiStockService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="FacturaService.cs" />
     <Compile Include="LogService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElectroJoule.BLL\ElectroJoule.BLL.csproj">
+      <Project>{13a27e0f-5904-43e5-a457-a5b5586e847c}</Project>
+      <Name>ElectroJoule.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElectroJoule.ENTITY\ElectroJoule.ENTITY.csproj">
+      <Project>{d113de13-a904-4f62-8cf0-4564896a46b5}</Project>
+      <Name>ElectroJoule.ENTITY</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -76,5 +76,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElectroJoule.ENTITY\ElectroJoule.ENTITY.csproj">
+      <Project>{d113de13-a904-4f62-8cf0-4564896a46b5}</Project>
+      <Name>ElectroJoule.ENTITY</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElectroJoule.SERVICES\ElectroJoule.SERVICES.csproj">
+      <Project>{3cc12e33-aeaf-4fbe-a7be-692afbca0e54}</Project>
+      <Name>ElectroJoule.SERVICES</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
