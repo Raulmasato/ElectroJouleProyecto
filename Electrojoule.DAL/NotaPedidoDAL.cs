@@ -14,25 +14,32 @@ namespace ElectroJoule.DAL
             try
             {
                 NotaPedido nota = null;
-                using var conn = new SqlConnection(ConexionBD.Cadena);
-                conn.Open();
-                var cmd = new SqlCommand("SELECT * FROM NotaPedido WHERE Id = @id", conn);
-                cmd.Parameters.AddWithValue("@id", id);
 
-                using var reader = cmd.ExecuteReader();
-                if (reader.Read())
+                using (var conn = new SqlConnection(ConexionBD.Cadena))
                 {
-                    nota = new NotaPedido
+                    conn.Open();
+                    var cmd = new SqlCommand("SELECT * FROM NotaPedido WHERE Id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        Id = id,
-                        Cliente = reader["Cliente"].ToString(),
-                        Email = reader["Email"].ToString(),
-                        Fecha = (DateTime)reader["Fecha"]
-                    };
+                        if (reader.Read())
+                        {
+                            nota = new NotaPedido
+                            {
+                                Id = id,
+                                Cliente = reader["Cliente"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Fecha = (DateTime)reader["Fecha"]
+                            };
+                        }
+                    }
+
+                    if (nota != null)
+                        nota.Items = ObtenerItems(id, conn);
+
+                    return nota;
                 }
-                reader.Close();
-                if (nota != null) nota.Items = ObtenerItems(id, conn);
-                return nota;
             }
             catch (Exception ex)
             {

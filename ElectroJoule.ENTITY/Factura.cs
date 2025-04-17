@@ -12,7 +12,7 @@ namespace ElectroJoule.ENTITY
         public string Cliente { get; set; }
         public string Email { get; set; }
         public DateTime Fecha { get; set; }
-        public List<ItemPedido> Items { get; set; } = new();
+        public List<ItemPedido> Items { get; set; } = new List<ItemPedido>();
         public decimal Total => Items.Sum(x => x.Subtotal);
     }
 }
