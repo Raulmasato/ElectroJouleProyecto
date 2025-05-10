@@ -41,10 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="ElectroJoule.BLL.cs" />
     <Compile Include="FacturacionBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Electrojoule.DAL\Electrojoule.DAL.csproj">
+      <Project>{763bd8bc-a094-4afe-9496-16fee36fe9e3}</Project>
+      <Name>Electrojoule.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ElectroJoule.ENTITY\ElectroJoule.ENTITY.csproj">
+      <Project>{d113de13-a904-4f62-8cf0-4564896a46b5}</Project>
+      <Name>ElectroJoule.ENTITY</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
