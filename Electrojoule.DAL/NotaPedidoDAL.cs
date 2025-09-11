@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Electrojoule.DAL;
 using ElectroJoule.ENTITY;
-using ElectroJoule.SERVICES;
+
 
 namespace ElectroJoule.DAL
 {
@@ -14,31 +15,31 @@ namespace ElectroJoule.DAL
             {
                 NotaPedido nota = null;
 
-                using var conn = new SqlConnection(ConexionBD.Cadena);
-                conn.Open();
-
-                var cmd = new SqlCommand("SELECT * FROM NotaPedido WHERE Id = @id", conn);
-                cmd.Parameters.AddWithValue("@id", id);
-
-                using var reader = cmd.ExecuteReader();
-                if (reader.Read())
+                using (var conn = new SqlConnection(ConexionBD.Cadena))
                 {
-                    nota = new NotaPedido
+                    conn.Open();
+                    var cmd = new SqlCommand("SELECT * FROM NotaPedido WHERE Id = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        Id = id,
-                        Cliente = reader["Cliente"].ToString(),
-                        Email = reader["Email"].ToString(),
-                        Fecha = (DateTime)reader["Fecha"]
-                    };
-                }
-                reader.Close();
+                        if (reader.Read())
+                        {
+                            nota = new NotaPedido
+                            {
+                                Id = id,
+                                Cliente = reader["Cliente"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Fecha = (DateTime)reader["Fecha"]
+                            };
+                        }
+                    }
 
-                if (nota != null)
-                {
-                    nota.Items = ObtenerItems(id, conn);
-                }
+                    if (nota != null)
+                        nota.Items = ObtenerItems(id, conn);
 
-                return nota;
+                    return nota;
+                }
             }
             catch (Exception ex)
             {
@@ -66,10 +67,5 @@ namespace ElectroJoule.DAL
             reader.Close();
             return items;
         }
-    }
-
-    public static class ConexionBD
-    {
-        public static string Cadena => "Server=MI_SERVIDOR;Database=ElectroJoule;Trusted_Connection=True;";
     }
 }

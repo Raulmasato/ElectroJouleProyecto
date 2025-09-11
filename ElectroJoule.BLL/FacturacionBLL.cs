@@ -1,7 +1,5 @@
 using System;
-using ElectroJoule.ENTITY;
-using ElectroJoule.DAL;
-using ElectroJoule.SERVICES;
+
 
 namespace ElectroJoule.BLL
 {
@@ -23,7 +21,7 @@ namespace ElectroJoule.BLL
         {
             try
             {
-                // Simulación de guardado
+                // Aquí iría DAL para guardar la factura si se desea
                 LogService.RegistrarEvento($"Factura {factura.NumeroFactura} generada.");
                 return true;
             }

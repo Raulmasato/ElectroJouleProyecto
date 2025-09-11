@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Electrojoule.DAL
 {
-    public class Class1
+    public static class ConexionBD
     {
+        public static string Cadena => "Server=MI_SERVIDOR;Database=ElectroJoule;Trusted_Connection=True;";
     }
 }
